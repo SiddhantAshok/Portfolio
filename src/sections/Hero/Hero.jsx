@@ -1,15 +1,28 @@
 import styles from './HeroStyles.module.css';
 import heroImg from '../../assets/hero-img.png';
-import themeIcon from '../../assets/sun.svg';
-import githubIcon from '../../assets/github-light.svg';
-import linkedInIcon from '../../assets/linkedin-light.svg';
-import gmailIcon from '../../assets/gmail-light.svg';
+import sun from '../../assets/sun.svg';
+import moon from '../../assets/moon.svg';
+import githubLightIcon from '../../assets/github-light.svg';
+import githubDarkIcon from '../../assets/github-dark.svg';
+import linkedInLightIcon from '../../assets/linkedin-light.svg';
+import linkedInDarkIcon from '../../assets/linkedin-dark.svg';
+import gmailLightIcon from '../../assets/gmail-light.svg';
+import gmailDarkIcon from '../../assets/gmail-dark.svg';
+import CV from '../../assets/SiddhantAshok_Resume.pdf';
+import { useTheme } from '../../common/ThemeContext';
 
 function Hero() {
+    const {theme, toggleTheme} = useTheme();
+
+    const themeIcon = theme === 'light' ? sun : moon;
+    const githubIcon = theme === 'light' ? githubLightIcon : githubDarkIcon;
+    const linkedInIcon = theme === 'light' ? linkedInLightIcon : linkedInDarkIcon;
+    const gmailIcon = theme === 'light' ? gmailLightIcon : gmailDarkIcon;
+
   return <section id="hero" className={styles.container}>
     <div className={styles.colorModeContainer}>
         <img className={styles.hero} src={heroImg} alt="Profile picture of Siddhant Ashok" />
-        <img className={styles.colorMode} src={themeIcon} alt="Color mode icon" />
+        <img className={styles.colorMode} src={themeIcon} alt="Color mode icon" onClick={toggleTheme}/>
     </div>
     <div className={styles.info}>
         <h1>
@@ -20,18 +33,25 @@ function Hero() {
         <h2>
             Full Stack Developer
         </h2>
+
         <span>
-            <a href="https://github.com/SiddhantAshok">
-            <img src={githubIcon} alt="Github-icon" /></a>
-        </span>
-        <span>
-            <a href="https://github.com/SiddhantAshok">
+            <a href="https://www.linkedin.com/in/siddhant-ashok-091994/" target='_blank'>
             <img src={linkedInIcon} alt="Linkedin-icon" /></a>
         </span>
         <span>
-            <a href="https://github.com/SiddhantAshok">
+            <a href="https://github.com/SiddhantAshok" target='_blank'>
+            <img src={githubIcon} alt="Github-icon" /></a>
+        </span>
+        <span>
+            <a href="siddhant.ashok091994@gmail.com" target='_blank'>
             <img src={gmailIcon} alt="Gmail-icon" /></a>
         </span>
+        <p className={styles.description}>
+            With a passion for developing modern React web apps for commercial businesses.
+        </p>
+        <a href={CV} download>
+            <button className='hover'>Resume</button>
+        </a>
     </div>
   </section>;
 }
