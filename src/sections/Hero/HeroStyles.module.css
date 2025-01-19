@@ -9,6 +9,7 @@
 
   .hero {
     max-width: 200px;
+    border-radius: 50%;
   }
 
   span{
@@ -22,6 +23,11 @@
   
       img {
         width: 30px;
+        transition: box-shadow 200ms ease-in-out, transform 200ms ease-in-out;
+      }
+
+      img:hover{
+        transform: scale(1.09);
       }
     }
   }
@@ -63,10 +69,12 @@
   position: absolute;
   right: 0;
   width: 25px;
+  transition: box-shadow 200ms ease-in-out, transform 200ms ease-in-out;
 }
 
 .colorMode:hover{
   cursor: pointer;
+  transform: scale(1.09);
 }
 
 .description{
@@ -77,4 +85,28 @@
   display: flex;
   flex-direction: column;
   gap: 20px;
+}
+
+@media(width >= 800px){
+  .container{
+    flex-direction: row-reverse;
+    align-items: center;
+    justify-content: space-evenly;
+  }
+
+  .hero{
+    max-width: 350px;
+    width: 350px;
+  }
+}
+
+
+@media(width >= 1400px){
+  .container{   
+
+    .hero{
+      max-width: 400px;
+      width: 400px;
+    }
+  }
 }
